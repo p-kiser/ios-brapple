@@ -1,4 +1,5 @@
 # Bräpple
+*Just Brew Yourself*
 
 Projekt für das Modul IOS an der HSLU.I
 
