@@ -1,19 +1,28 @@
 # Bräpple
-*Just Brew Yourself*
+
+> *Just Brew Yourself*
 
 Projekt für das Modul IOS an der HSLU.I
 
-App
+## Todo
 
-# TODO
+### 20.11.18
 
-- [ ] Feature List
-- [ ] Papier-Prototyp
+- [x] Feature List
+- [x] Papier-Prototyp
+
+### 3.12.18
+
 - [ ] Rezepte erstellen (JSON)
 - [ ] Rezepte einlesen
 - [ ] Benutzereinstellungen (Menge in L)
 - [ ] Mengenberechnung
+
+### 10.12.18
 - [ ] Ablauf Arbeitsschritte
 - [ ] Alarm
 - [ ] Kalendereintrag Flaschenabfüllung
-- [ ] Präsentation erstellen
+- [ ] Vorabversion Folien
+
+### 17.12.18
+- [ ] Präsentation fertigstellen
