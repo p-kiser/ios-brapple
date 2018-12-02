@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0573BF8421AD156E00CF3EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573BF8321AD156E00CF3EF6 /* AppDelegate.swift */; };
-		0573BF8621AD156E00CF3EF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573BF8521AD156E00CF3EF6 /* ViewController.swift */; };
+		0573BF8621AD156E00CF3EF6 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573BF8521AD156E00CF3EF6 /* PickerViewController.swift */; };
 		0573BF8921AD156E00CF3EF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0573BF8721AD156E00CF3EF6 /* Main.storyboard */; };
 		0573BF8B21AD156E00CF3EF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0573BF8A21AD156E00CF3EF6 /* Assets.xcassets */; };
 		0573BF8E21AD156E00CF3EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0573BF8C21AD156E00CF3EF6 /* LaunchScreen.storyboard */; };
 		0573BF9921AD156F00CF3EF6 /* brappleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573BF9821AD156F00CF3EF6 /* brappleTests.swift */; };
 		0573BFA421AD156F00CF3EF6 /* brappleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573BFA321AD156F00CF3EF6 /* brappleUITests.swift */; };
+		05DED29821B475E3006D7F2B /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED29721B475E3006D7F2B /* LogoViewController.swift */; };
+		05DED29A21B4771F006D7F2B /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED29921B4771F006D7F2B /* RecipeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,7 @@
 /* Begin PBXFileReference section */
 		0573BF8021AD156E00CF3EF6 /* brapple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = brapple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0573BF8321AD156E00CF3EF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0573BF8521AD156E00CF3EF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0573BF8521AD156E00CF3EF6 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		0573BF8821AD156E00CF3EF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0573BF8A21AD156E00CF3EF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0573BF8D21AD156E00CF3EF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		0573BF9F21AD156F00CF3EF6 /* brappleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brappleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0573BFA321AD156F00CF3EF6 /* brappleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = brappleUITests.swift; sourceTree = "<group>"; };
 		0573BFA521AD156F00CF3EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05DED29721B475E3006D7F2B /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
+		05DED29921B4771F006D7F2B /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				0573BF8321AD156E00CF3EF6 /* AppDelegate.swift */,
-				0573BF8521AD156E00CF3EF6 /* ViewController.swift */,
 				0573BF8721AD156E00CF3EF6 /* Main.storyboard */,
 				0573BF8A21AD156E00CF3EF6 /* Assets.xcassets */,
 				0573BF8C21AD156E00CF3EF6 /* LaunchScreen.storyboard */,
 				0573BF8F21AD156E00CF3EF6 /* Info.plist */,
+				05DED29721B475E3006D7F2B /* LogoViewController.swift */,
+				0573BF8521AD156E00CF3EF6 /* PickerViewController.swift */,
+				05DED29921B4771F006D7F2B /* RecipeViewController.swift */,
 			);
 			path = brapple;
 			sourceTree = "<group>";
@@ -256,7 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0573BF8621AD156E00CF3EF6 /* ViewController.swift in Sources */,
+				05DED29A21B4771F006D7F2B /* RecipeViewController.swift in Sources */,
+				05DED29821B475E3006D7F2B /* LogoViewController.swift in Sources */,
+				0573BF8621AD156E00CF3EF6 /* PickerViewController.swift in Sources */,
 				0573BF8421AD156E00CF3EF6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
