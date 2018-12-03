@@ -16,6 +16,14 @@
 		0573BFA421AD156F00CF3EF6 /* brappleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573BFA321AD156F00CF3EF6 /* brappleUITests.swift */; };
 		05DED29821B475E3006D7F2B /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED29721B475E3006D7F2B /* LogoViewController.swift */; };
 		05DED29A21B4771F006D7F2B /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED29921B4771F006D7F2B /* RecipeViewController.swift */; };
+		52DC9DB421B53DBC0020FF7A /* PreparationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DB321B53DBC0020FF7A /* PreparationViewController.swift */; };
+		52DC9DB821B54B920020FF7A /* MashingTippsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DB721B54B920020FF7A /* MashingTippsViewController.swift */; };
+		52DC9DBA21B54BB90020FF7A /* MashingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DB921B54BB90020FF7A /* MashingViewController.swift */; };
+		52DC9DBC21B54C410020FF7A /* HopReproducingTippsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DBB21B54C410020FF7A /* HopReproducingTippsViewController.swift */; };
+		52DC9DBE21B54C5A0020FF7A /* HopReproducingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DBD21B54C5A0020FF7A /* HopReproducingViewController.swift */; };
+		52DC9DC021B54CC70020FF7A /* FermentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DBF21B54CC70020FF7A /* FermentationViewController.swift */; };
+		52DC9DC221B54CE00020FF7A /* MaturationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DC121B54CE00020FF7A /* MaturationViewController.swift */; };
+		52DC9DC421B54D060020FF7A /* CompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DC321B54D060020FF7A /* CompletionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +59,14 @@
 		0573BFA521AD156F00CF3EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05DED29721B475E3006D7F2B /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
 		05DED29921B4771F006D7F2B /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		52DC9DB321B53DBC0020FF7A /* PreparationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationViewController.swift; sourceTree = "<group>"; };
+		52DC9DB721B54B920020FF7A /* MashingTippsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MashingTippsViewController.swift; sourceTree = "<group>"; };
+		52DC9DB921B54BB90020FF7A /* MashingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MashingViewController.swift; sourceTree = "<group>"; };
+		52DC9DBB21B54C410020FF7A /* HopReproducingTippsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopReproducingTippsViewController.swift; sourceTree = "<group>"; };
+		52DC9DBD21B54C5A0020FF7A /* HopReproducingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopReproducingViewController.swift; sourceTree = "<group>"; };
+		52DC9DBF21B54CC70020FF7A /* FermentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FermentationViewController.swift; sourceTree = "<group>"; };
+		52DC9DC121B54CE00020FF7A /* MaturationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaturationViewController.swift; sourceTree = "<group>"; };
+		52DC9DC321B54D060020FF7A /* CompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +125,14 @@
 				05DED29721B475E3006D7F2B /* LogoViewController.swift */,
 				0573BF8521AD156E00CF3EF6 /* PickerViewController.swift */,
 				05DED29921B4771F006D7F2B /* RecipeViewController.swift */,
+				52DC9DB321B53DBC0020FF7A /* PreparationViewController.swift */,
+				52DC9DB721B54B920020FF7A /* MashingTippsViewController.swift */,
+				52DC9DB921B54BB90020FF7A /* MashingViewController.swift */,
+				52DC9DBB21B54C410020FF7A /* HopReproducingTippsViewController.swift */,
+				52DC9DBD21B54C5A0020FF7A /* HopReproducingViewController.swift */,
+				52DC9DBF21B54CC70020FF7A /* FermentationViewController.swift */,
+				52DC9DC121B54CE00020FF7A /* MaturationViewController.swift */,
+				52DC9DC321B54D060020FF7A /* CompletionViewController.swift */,
 			);
 			path = brapple;
 			sourceTree = "<group>";
@@ -262,10 +286,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52DC9DC021B54CC70020FF7A /* FermentationViewController.swift in Sources */,
 				05DED29A21B4771F006D7F2B /* RecipeViewController.swift in Sources */,
+				52DC9DC421B54D060020FF7A /* CompletionViewController.swift in Sources */,
+				52DC9DB421B53DBC0020FF7A /* PreparationViewController.swift in Sources */,
+				52DC9DBC21B54C410020FF7A /* HopReproducingTippsViewController.swift in Sources */,
+				52DC9DBE21B54C5A0020FF7A /* HopReproducingViewController.swift in Sources */,
+				52DC9DC221B54CE00020FF7A /* MaturationViewController.swift in Sources */,
 				05DED29821B475E3006D7F2B /* LogoViewController.swift in Sources */,
 				0573BF8621AD156E00CF3EF6 /* PickerViewController.swift in Sources */,
+				52DC9DB821B54B920020FF7A /* MashingTippsViewController.swift in Sources */,
 				0573BF8421AD156E00CF3EF6 /* AppDelegate.swift in Sources */,
+				52DC9DBA21B54BB90020FF7A /* MashingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +474,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = brapple/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,6 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = brapple/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -477,6 +511,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = brappleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,6 +519,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ch.hslu.ios.hs18.brappleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/brapple.app/brapple";
@@ -497,6 +533,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = brappleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,6 +553,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = brappleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,6 +573,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = brappleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
