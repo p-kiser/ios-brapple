@@ -13,3 +13,4 @@ class HopReproducingTippsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+}

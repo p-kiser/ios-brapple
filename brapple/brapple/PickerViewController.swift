@@ -15,7 +15,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var volumeTextField: UITextField!
     @IBOutlet weak var volumeSlider: UISlider!
     
-    
+    var volume : Float = 10.0
     var beers : [String] =  [String]();
     
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         self.beerPicker.delegate = self
         
         // set volume text field to default value
-        volumeSlider.value = 60
+        volumeSlider.value = volume
         volumeTextField.text = String(volumeSlider.value)
     }
 
@@ -64,6 +64,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     // volume slider and textfield functions
     @IBAction func volumeSliderChanged(_ sender: UISlider) {
+        volume = volumeSlider.value
         volumeTextField.text = String(format: "%.2f", sender.value)
     }
     @IBAction func volumeTextFieldChanged(_ sender: UITextField) {
@@ -76,5 +77,11 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         volumeSlider.value = volume
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is RecipeViewController {
+            let vc = segue.destination as? RecipeViewController
+            vc?.volume = self.volume
+        }
+    }
 }
 
