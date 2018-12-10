@@ -12,6 +12,10 @@ class PreparationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        // log stuff
+        NSLog(">>> " + String(describing: type(of: self)))
     }
     
     // TODO Implement presentation of the choosen recipe as preparation steps

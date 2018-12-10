@@ -18,6 +18,8 @@ class MashingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // log stuff
+        NSLog(String(describing: type(of: self)))
         self.timeInSeconds = 10 // TODO Replace with the persisted value from the recipe
     }
     

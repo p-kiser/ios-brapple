@@ -12,5 +12,7 @@ class MashingTippsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // log stuff
+        NSLog(String(describing: type(of: self)))
     }
 }

@@ -10,15 +10,15 @@ import UIKit
 
 class LogoViewController: UIViewController {
     
-    // TODO: JSON-Rezept erstellen nach folgender Vorlage:
-    // https://craftbeer-revolution.de/lexikon/bier-selber-brauen/india-pale-rezept
-    // Datentypen: siehe RecipeViewController
-    
+
     @IBOutlet weak var logo: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // log stuff
+        NSLog(">>> " + String(describing: type(of: self)))
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,7 +28,5 @@ class LogoViewController: UIViewController {
     @IBAction func spinnerButton(_ sender: UIButton) {
         logo.transform = logo.transform.rotated(by: CGFloat(Double.pi / 4))
     }
-
-    // TODO: fake loading bar and/or splash screen effect
 }
 
