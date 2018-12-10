@@ -10,6 +10,14 @@ import UIKit
 
 class MashingViewController: UIViewController {
     
+    // Temp in °C, Time in seconds
+    let mashingProcesses = [
+        [10, 0],
+        [60, 3],
+        [72, 3]]
+    var currentMashingProcess : Int = 0
+    var mashingProcessLabels : [UILabel] = []
+    
     var isTimerRunning = false
     var timer = Timer()
     var timeInSeconds = 0
@@ -20,7 +28,36 @@ class MashingViewController: UIViewController {
         super.viewDidLoad()
         // log stuff
         NSLog(String(describing: type(of: self)))
-        self.timeInSeconds = 10 // TODO Replace with the persisted value from the recipe
+        self.timeInSeconds = self.mashingProcesses[self.currentMashingProcess][1]
+        addLabels()
+        updateHighlight()
+    }
+    
+    func addLabels() {
+        var i = 0
+        for(_, mashingProcess) in mashingProcesses.enumerated() {
+            let label = UILabel(frame: CGRect(x: -2, y: 200+i*48, width: 380, height: 50))
+            label.text = NSString(format:"%d°C\t%ds", mashingProcess[0], mashingProcess[1]) as String
+            label.textAlignment = .center
+            label.layer.borderWidth = 2.0
+            label.layer.zPosition = 0
+            self.view.addSubview(label)
+            self.mashingProcessLabels.append(label)
+            i += 1
+        }
+    }
+    
+    func updateHighlight() {
+        if self.currentMashingProcess < self.mashingProcesses.count {
+            self.view.bringSubviewToFront(self.mashingProcessLabels[self.currentMashingProcess]);
+            self.mashingProcessLabels[self.currentMashingProcess].textColor = UIColor.green
+            self.mashingProcessLabels[self.currentMashingProcess].layer.borderColor = UIColor.green.cgColor
+        }
+        if self.currentMashingProcess > 0 {
+            self.mashingProcessLabels[self.currentMashingProcess - 1].textColor = UIColor.black
+            self.mashingProcessLabels[self.currentMashingProcess - 1].layer.borderColor = UIColor.black.cgColor
+            
+        }
     }
     
     @IBAction func timerButtonPressed(_ sender: UIButton) {
@@ -41,8 +78,15 @@ class MashingViewController: UIViewController {
     @objc func updateTimer() {
         if self.timeInSeconds < 1 {
             self.timer.invalidate()
-            self.timerButton.setTitle("Timer starten", for: .normal)
-            // TODO Move on the the next step of the mashing process
+            self.currentMashingProcess += 1
+            if self.currentMashingProcess < self.mashingProcesses.count {
+                self.timeInSeconds = self.mashingProcesses[self.currentMashingProcess][1]
+                self.timerButton.setTitle("Timer starten", for: .normal)
+                self.isTimerRunning = false
+            } else {
+                self.timerButton.isEnabled = false
+            }
+            updateHighlight()
         } else {
             self.timeInSeconds -= 1
             self.timerButton.setTitle(timeString(time: TimeInterval(self.timeInSeconds)), for: .normal)
