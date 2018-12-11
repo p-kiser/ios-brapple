@@ -14,6 +14,7 @@
 		0573BF8E21AD156E00CF3EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0573BF8C21AD156E00CF3EF6 /* LaunchScreen.storyboard */; };
 		0573BF9921AD156F00CF3EF6 /* brappleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573BF9821AD156F00CF3EF6 /* brappleTests.swift */; };
 		0573BFA421AD156F00CF3EF6 /* brappleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573BFA321AD156F00CF3EF6 /* brappleUITests.swift */; };
+		05B12B2421BFEC27005D1968 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B12B2321BFEC27005D1968 /* Recipe.swift */; };
 		05DED29821B475E3006D7F2B /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED29721B475E3006D7F2B /* LogoViewController.swift */; };
 		05DED29A21B4771F006D7F2B /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DED29921B4771F006D7F2B /* RecipeViewController.swift */; };
 		52DC9DB421B53DBC0020FF7A /* PreparationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DB321B53DBC0020FF7A /* PreparationViewController.swift */; };
@@ -57,6 +58,7 @@
 		0573BF9F21AD156F00CF3EF6 /* brappleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brappleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0573BFA321AD156F00CF3EF6 /* brappleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = brappleUITests.swift; sourceTree = "<group>"; };
 		0573BFA521AD156F00CF3EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05B12B2321BFEC27005D1968 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		05DED29721B475E3006D7F2B /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
 		05DED29921B4771F006D7F2B /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		52DC9DB321B53DBC0020FF7A /* PreparationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparationViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				52DC9DBF21B54CC70020FF7A /* FermentationViewController.swift */,
 				52DC9DC121B54CE00020FF7A /* MaturationViewController.swift */,
 				52DC9DC321B54D060020FF7A /* CompletionViewController.swift */,
+				05B12B2321BFEC27005D1968 /* Recipe.swift */,
 			);
 			path = brapple;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				05DED29821B475E3006D7F2B /* LogoViewController.swift in Sources */,
 				0573BF8621AD156E00CF3EF6 /* PickerViewController.swift in Sources */,
 				52DC9DB821B54B920020FF7A /* MashingTippsViewController.swift in Sources */,
+				05B12B2421BFEC27005D1968 /* Recipe.swift in Sources */,
 				0573BF8421AD156E00CF3EF6 /* AppDelegate.swift in Sources */,
 				52DC9DBA21B54BB90020FF7A /* MashingViewController.swift in Sources */,
 			);

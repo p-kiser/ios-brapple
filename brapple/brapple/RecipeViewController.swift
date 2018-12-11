@@ -8,20 +8,6 @@
 
 import UIKit
 
-// Recipe struct
-struct Recipe {
-    let Name : String
-    let Water : Float
-    let Style : String
-    let Malts : [(Name:String,Amount:Float)]
-    let Hops : [(Name:String,Amount:Float)]
-    let Yeast : [String]
-    let Mashing : [(Temp:Int,Rest:Int)]
-    let Hopping : [(Name:String,Time:Int)]
-    let Fermentation : (Temp:Int, Weeks:Int)
-    let Maturation : (Glucose:Int, Temp:Int, Duration: Int)
-}
-
 class RecipeViewController: UIViewController {
   
     // name of the chosen recipe
@@ -29,8 +15,6 @@ class RecipeViewController: UIViewController {
     // volume
     var volume : Float = 0.0
     // Brauwasser in Liter
-    var water : Float = 0.0
-    // recipe
     var recipe : Recipe?
     
     @IBOutlet weak var waterLabel: UILabel!
@@ -42,12 +26,11 @@ class RecipeViewController: UIViewController {
         // log stuff
         NSLog(">>> " + String(describing: type(of: self)))
         
-        // water multiplication factor
-        // TODO: Get this from the recipe
-        water = 1.2
         // get recipe
         let urlString = "https://pkiser.com/brapple/" + recipeId + ".json"
-        let url = URL(string: urlString)!
+        let url : URL = URL(string: urlString)!
+        let recipe = Recipe(url: url,volume: volume) as Recipe
+        /*
         let rawData = try! Data(contentsOf: url)
         let jsonData = try! JSONSerialization.jsonObject(with: rawData)
         
@@ -81,7 +64,7 @@ class RecipeViewController: UIViewController {
             
             recipe = Recipe (
                 Name: dict["Name"] as! String,
-                Water: dict["Water"] as! Float,
+                Water: Float(dict["Water"] as! NSNumber),
                 Style: dict["Style"] as! String,
                 Malts: malts,
                 Hops: hops,
@@ -93,19 +76,20 @@ class RecipeViewController: UIViewController {
             )
             NSLog(recipe!.Name)
         }
+        */
         
         // show data
         // TODO: Make this prettier, as a table or whatever
         
-        waterLabel.text = String(format: "%2.2f L", water * volume)
+        waterLabel.text = String(format: "%2.2f L", recipe.Water)
         
-        for (index, m) in recipe!.Malts.enumerated() {
+        for (index, m) in recipe.Malts.enumerated() {
             let pos = index * 35 + 200
             let label = UILabel(frame: CGRect(x: 50, y: pos, width: 300, height: 60))
             label.text = String(format: "%3.2f kg\t%@", m.Amount, m.Name)
             self.view.addSubview(label)
         }
-        for (index, h) in recipe!.Hops.enumerated() {
+        for (index, h) in recipe.Hops.enumerated() {
             let pos = index * 35 + 400
             let label = UILabel(frame: CGRect(x: 50, y: pos, width: 300, height: 60))
             label.text = String(format: "%4.2f g\t%@", h.Amount, h.Name)
@@ -118,7 +102,6 @@ class RecipeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     // pass the recipe to the next controller
-    // TODO: Fix this. Make recipe globally accessible (singleton/instance of class Recipe or whatever)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is PreparationViewController {
             let vc = segue.destination as? PreparationViewController

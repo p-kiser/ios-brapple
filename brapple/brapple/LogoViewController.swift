@@ -10,19 +10,12 @@ import UIKit
 
 class LogoViewController: UIViewController {
     
-
     @IBOutlet weak var logo: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        // log stuff
-        NSLog(">>> " + String(describing: type(of: self)))
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        logo.transform = logo.transform.rotated(by: CGFloat(-Double.pi / 4))
     }
     
     @IBAction func spinnerButton(_ sender: UIButton) {
