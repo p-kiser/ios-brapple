@@ -13,8 +13,8 @@ class MashingViewController: UIViewController {
     // Temp in °C, Time in seconds
     let mashingProcesses = [
         [10, 0],
-        [60, 3],
-        [72, 3]]
+        [60, 300],
+        [72, 120]]
     var currentMashingProcess : Int = 0
     var mashingProcessLabels : [UILabel] = []
     
@@ -28,7 +28,19 @@ class MashingViewController: UIViewController {
         super.viewDidLoad()
         // log stuff
         NSLog(String(describing: type(of: self)))
-        self.timeInSeconds = self.mashingProcesses[self.currentMashingProcess][1]
+        
+        if isKeyPresentInUserDefaults(key: "mashingTimerKey") {
+            self.timeInSeconds = UserDefaults.standard.object(forKey: "mashingTimerKey") as? Int ?? 0
+        } else {
+            self.timeInSeconds = self.mashingProcesses[self.currentMashingProcess][1]
+        }
+        
+        if isKeyPresentInUserDefaults(key: "mashingProcessKey") {
+            self.currentMashingProcess = UserDefaults.standard.object(forKey: "mashingProcessKey") as? Int ?? 0
+        } else {
+            self.currentMashingProcess = 0
+        }
+        
         addLabels()
         updateHighlight()
     }
@@ -79,6 +91,7 @@ class MashingViewController: UIViewController {
         if self.timeInSeconds < 1 {
             self.timer.invalidate()
             self.currentMashingProcess += 1
+            UserDefaults.standard.set(self.currentMashingProcess, forKey: "mashingProcessKey")
             if self.currentMashingProcess < self.mashingProcesses.count {
                 self.timeInSeconds = self.mashingProcesses[self.currentMashingProcess][1]
                 self.timerButton.setTitle("Timer starten", for: .normal)
@@ -91,6 +104,7 @@ class MashingViewController: UIViewController {
             self.timeInSeconds -= 1
             self.timerButton.setTitle(timeString(time: TimeInterval(self.timeInSeconds)), for: .normal)
         }
+        UserDefaults.standard.set(self.timeInSeconds, forKey: "mashingTimerKey")
     }
     
     func timeString(time:TimeInterval) -> String {
@@ -98,5 +112,9 @@ class MashingViewController: UIViewController {
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+    }
+    
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
     }
 }
