@@ -28,7 +28,7 @@ class MashingViewController: UIViewController {
         // display beer name and liters
         topLabel.text = String(format: "%@, %.2f L", recipe!.Name, volume)
         
-        // set debugging times
+        // set shorter times for testing / demo
         if debug {
             for (i,_) in mashingProcesses.enumerated() {
                 mashingProcesses[i].Rest = 3
@@ -51,7 +51,7 @@ class MashingViewController: UIViewController {
         }
         NSLog("Current step: %i", currentMashingProcess)
         
-        //addLabels()
+        // add Labels
         for (i, m) in self.mashingProcesses.enumerated() {
             let label = UILabel(frame: CGRect(x: -2, y: 200+i*48, width: 380, height: 50))
             label.text = String(format:"Bei %i °C für %i Sekunden ruhen lassen", m.Temp, m.Rest)

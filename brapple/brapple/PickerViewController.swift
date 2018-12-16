@@ -20,33 +20,45 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     let recipesUrl = URL(string:"https://pkiser.com/brapple/recipes.json")
     var beers : [(Id:String,Name:String)] = [];
     
+    // persisted data
+    var persBeerId : String?
+    var persWaterVol : Float?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         continueButton.isHidden = true
         
         // list of beer to display
-        self.beers = getRecipes()
+        beers = getRecipes(url: recipesUrl!)
         //set data source and delegate to self
-        self.beerPicker.dataSource = self
-        self.beerPicker.delegate = self
+        beerPicker.dataSource = self
+        beerPicker.delegate = self
         
         // set volume text field to default value
         volumeSlider.value = volume
         volumeTextField.text = String(volumeSlider.value)
         
+        // get persisted recipe
         if (UserDefaults.standard.string(forKey: "Id") != nil) {
+            persBeerId = UserDefaults.standard.string(forKey: "Id")!
+            persWaterVol = UserDefaults.standard.float(forKey: "WaterVolume")
             
-            NSLog("Persisted Recipe found: %@, Water: %f L.",  UserDefaults.standard.string(forKey: "Id")!, UserDefaults.standard.float(forKey: "WaterVolume") )
-            let beer = beers.first(where: {$0.Id == UserDefaults.standard.string(forKey: "Id")})
-            let title = String(format: "Weitermachen mit: %@?", beer!.Name)
-            
+            let name = beers.first(where: { $0.Id == persBeerId })?.Name
+            let title = String(format: "Weitermachen mit: %@?", name!)
+            NSLog("Persisted Recipe found: %@, Water: %.2f L.",  persBeerId!, persWaterVol!)
+
             continueButton.setTitle(title, for: UIControl.State.normal)
             continueButton.isHidden = false
+            
+            // set input variables to default
+            let index : Int = beerPicker.selectedRow(inComponent: 0)
+            recipeId = beers[index].Id
+            volume = volumeSlider.value
         }
     }
     @IBAction func continuePressed(_ sender: UIButton) {
-        recipeId = UserDefaults.standard.string(forKey: "Id")!
-        volume = UserDefaults.standard.float(forKey: "WaterVolume")
+        recipeId = persBeerId!
+        volume = persWaterVol!
         NSLog("Continue with persisted: %@, %f L.", recipeId, volume)
     }
     @IBAction func zutatenPressed(_ sender: UIButton) {
@@ -60,14 +72,15 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         super.didReceiveMemoryWarning()
     }
     
-    func getRecipes() -> [(Id:String, Name:String)] {
+    func getRecipes(url : URL) -> [(Id:String, Name:String)] {
         
         var recipes : [(Id:String, Name:String)] = [];
-        let rawData = try! Data(contentsOf: self.recipesUrl!)
+        let rawData = try! Data(contentsOf: url)
         let jsonData = try! JSONSerialization.jsonObject(with: rawData)
         
-        for item in jsonData as! [[String: Any]] {
-            recipes.append((Id: item["id"] as! String, Name: item["name"] as! String))
+        for item in jsonData as! [[String: String]] {
+            recipes.append((Id: item["id"]! , Name: item["name"]!))
+            NSLog("Added %@ to recipe list", item["id"]!)
         }
         return recipes;
     }
@@ -85,7 +98,9 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-       recipeId = beers[row].Id
+        let beer = beers[row]
+        NSLog("beers[i]: %@, Index: %i", beer.Id, row)
+       recipeId = beer.Id
     }
     
     // volume slider and textfield functions
@@ -94,10 +109,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         volumeTextField.text = String(format: "%.2f", sender.value)
     }
     @IBAction func volumeTextFieldChanged(_ sender: UITextField) {
-        
-        let text : String! = sender.text
-        let volume : Float = Float(text) ?? 0.0
-        volumeSlider.value = volume
+        // input from text field disabled in free version
     }
     
 }

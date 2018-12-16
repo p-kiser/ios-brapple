@@ -21,6 +21,7 @@ class PreparationViewController: UIViewController {
         // display beer name and liters
         topLabel.text = String(format: "%@, %.2f L", recipe!.Name, volume)
         
+        // set label texts
         mashView.text = ""
         for m in recipe!.Mashing {
             mashView.text.append(String(format: "Ruhen bei %i °C für %i Minuten\n", m.Temp, m.Rest))
@@ -30,7 +31,6 @@ class PreparationViewController: UIViewController {
         for h in recipe!.Hopping {
             hopsView.text.append(String(format: "%@ nach %i Minuten\n", h.Name, h.Time))
         }
-        
         
         fermLabel.text = String(format: "%i Tage bei %i °C", recipe!.Fermentation.Weeks, recipe!.Fermentation.Temp)
         

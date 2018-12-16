@@ -12,16 +12,18 @@ import EventKit
 class FermentationViewController: UIViewController {
     
     @IBOutlet weak var topLabel: UILabel!
-    @IBOutlet weak var fermLabel: UILabel!
-    @IBOutlet weak var matLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var fermView: UITextView!
+    @IBOutlet weak var matView: UITextView!
+    
     
     // time in days
     let fermentation: Int = recipe!.Fermentation.Weeks
     let maturation : Int = recipe!.Maturation.Duration +  recipe!.Fermentation.Weeks
     
     // calendar entry titles
-    let fermText = "Gärung beendet: " + recipe!.Name
-    let matText = "Flaschengärung beendet: " + recipe!.Name
+    let fermText = "Gärung beendet: "
+    let matText = "Flaschengärung beendet: "
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,19 +31,24 @@ class FermentationViewController: UIViewController {
         // display beer name and liters
         topLabel.text = String(format: "%@, %.2f L", recipe!.Name, volume)
         
-        // dates on labels
+        // set texts on labels
+        nameLabel.text = recipe!.Name
+        fermView.text = ""
+        fermView.text.append(fermText + "\n")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
-        fermLabel.text = dateFormatter.string(from: getDate(days: fermentation)) + ": " + fermText
-        matLabel.text = dateFormatter.string(from: getDate(days: maturation)) + ": " + matText
+        fermView.text.append(dateFormatter.string(from: getDate(days: fermentation)))
+        matView.text = ""
+        matView.text.append(matText + "\n")
+        matView.text.append(dateFormatter.string(from: getDate(days: maturation)))
     }
     
     @IBAction func onCalendarButtonPressed(_ sender: UIButton) {
-        setCalendarEntry(date: getDate(days: fermentation), name: fermText)
+        setCalendarEntry(date: getDate(days: fermentation), name: fermText + recipe!.Name)
         sender.isEnabled = false
     }
     @IBAction func matButtPressed(_ sender: UIButton) {
-         setCalendarEntry(date: getDate(days: maturation), name: matText)
+         setCalendarEntry(date: getDate(days: maturation), name: matText + recipe!.Name)
         sender.isEnabled = false
     }
     

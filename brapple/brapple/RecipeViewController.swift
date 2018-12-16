@@ -30,28 +30,20 @@ class RecipeViewController: UIViewController {
         UserDefaults.standard.set(recipeId, forKey: "Id")
         UserDefaults.standard.set(volume, forKey: "WaterVolume")
         NSLog("Persisted Data for: %@ with %f L", recipeId, volume)
-        /*
-        UserDefaults.standard.set(recipe, forKey: "recipe")
-        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: recipe)
-        UserDefaults.standard.set(encodedData, forKey: "recipe")
-        */
         UserDefaults.standard.synchronize()
         
         // display beer name and liters
         topLabel.text = String(format: "%@, %.2f L", recipe!.Name, volume)
         
         // show data
-
         waterLabel.text = String(format: "%2.2f L", recipe!.Water)
-        
         malzView.text = ""
         for m in recipe!.Malts {
-            malzView.text.append(String(format: "%4.2f kg %@\n", m.Amount, m.Name))
+            malzView.text.append(String(format: "%@, (4.2f kg)\n", m.Name, m.Amount))
         }
-        
         hopfView.text = ""
         for h in recipe!.Hops {
-            hopfView.text.append(String(format: "%4.2f g %@\n", h.Amount, h.Name))
+            hopfView.text.append(String(format: "%@ (4.2f g)\n", h.Name, h.Amount))
         }
     }
 }
