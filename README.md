@@ -13,16 +13,16 @@ Projekt für das Modul IOS an der HSLU.I
 
 ### 3.12.18
 
-- [ ] Rezepte erstellen (JSON)
-- [ ] Rezepte einlesen
-- [ ] Benutzereinstellungen (Menge in L)
-- [ ] Mengenberechnung
+- [x] Rezepte erstellen (JSON)
+- [x] Rezepte einlesen
+- [x] Benutzereinstellungen (Menge in L)
+- [x] Mengenberechnung
 
 ### 10.12.18
-- [ ] Ablauf Arbeitsschritte
-- [ ] Alarm
-- [ ] Kalendereintrag Flaschenabfüllung
-- [ ] Vorabversion Folien
+- [x] Ablauf Arbeitsschritte
+- [x] Alarm
+- [x] Kalendereintrag Flaschenabfüllung
+- [x] Vorabversion Folien
 
 ### 17.12.18
-- [ ] Präsentation fertigstellen
+- [x] Präsentation fertigstellen
