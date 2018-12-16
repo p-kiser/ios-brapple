@@ -23,7 +23,6 @@
 		52DC9DBC21B54C410020FF7A /* HopReproducingTippsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DBB21B54C410020FF7A /* HopReproducingTippsViewController.swift */; };
 		52DC9DBE21B54C5A0020FF7A /* HopReproducingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DBD21B54C5A0020FF7A /* HopReproducingViewController.swift */; };
 		52DC9DC021B54CC70020FF7A /* FermentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DBF21B54CC70020FF7A /* FermentationViewController.swift */; };
-		52DC9DC221B54CE00020FF7A /* MaturationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DC121B54CE00020FF7A /* MaturationViewController.swift */; };
 		52DC9DC421B54D060020FF7A /* CompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DC9DC321B54D060020FF7A /* CompletionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +66,6 @@
 		52DC9DBB21B54C410020FF7A /* HopReproducingTippsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopReproducingTippsViewController.swift; sourceTree = "<group>"; };
 		52DC9DBD21B54C5A0020FF7A /* HopReproducingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopReproducingViewController.swift; sourceTree = "<group>"; };
 		52DC9DBF21B54CC70020FF7A /* FermentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FermentationViewController.swift; sourceTree = "<group>"; };
-		52DC9DC121B54CE00020FF7A /* MaturationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaturationViewController.swift; sourceTree = "<group>"; };
 		52DC9DC321B54D060020FF7A /* CompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,7 +131,6 @@
 				52DC9DBB21B54C410020FF7A /* HopReproducingTippsViewController.swift */,
 				52DC9DBD21B54C5A0020FF7A /* HopReproducingViewController.swift */,
 				52DC9DBF21B54CC70020FF7A /* FermentationViewController.swift */,
-				52DC9DC121B54CE00020FF7A /* MaturationViewController.swift */,
 				52DC9DC321B54D060020FF7A /* CompletionViewController.swift */,
 				05B12B2321BFEC27005D1968 /* Recipe.swift */,
 			);
@@ -295,7 +292,6 @@
 				52DC9DB421B53DBC0020FF7A /* PreparationViewController.swift in Sources */,
 				52DC9DBC21B54C410020FF7A /* HopReproducingTippsViewController.swift in Sources */,
 				52DC9DBE21B54C5A0020FF7A /* HopReproducingViewController.swift in Sources */,
-				52DC9DC221B54CE00020FF7A /* MaturationViewController.swift in Sources */,
 				05DED29821B475E3006D7F2B /* LogoViewController.swift in Sources */,
 				0573BF8621AD156E00CF3EF6 /* PickerViewController.swift in Sources */,
 				52DC9DB821B54B920020FF7A /* MashingTippsViewController.swift in Sources */,

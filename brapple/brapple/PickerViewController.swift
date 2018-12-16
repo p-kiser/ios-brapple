@@ -14,21 +14,18 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var beerPicker: UIPickerView!
     @IBOutlet weak var volumeTextField: UITextField!
     @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var continueButton: UIButton!
     
+    // get list of recipes for picker
     let recipesUrl = URL(string:"https://pkiser.com/brapple/recipes.json")
-    var recipeId = ""
-    var volume : Float = 10.0
     var beers : [(Id:String,Name:String)] = [];
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        continueButton.isHidden = true
         
-        // log stuff
-        NSLog(">>> " + String(describing: type(of: self)))
-
-        beers = getRecipes()
-        
+        // list of beer to display
+        self.beers = getRecipes()
         //set data source and delegate to self
         self.beerPicker.dataSource = self
         self.beerPicker.delegate = self
@@ -36,8 +33,29 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         // set volume text field to default value
         volumeSlider.value = volume
         volumeTextField.text = String(volumeSlider.value)
+        
+        if (UserDefaults.standard.string(forKey: "Id") != nil) {
+            
+            NSLog("Persisted Recipe found: %@, Water: %f L.",  UserDefaults.standard.string(forKey: "Id")!, UserDefaults.standard.float(forKey: "WaterVolume") )
+            let beer = beers.first(where: {$0.Id == UserDefaults.standard.string(forKey: "Id")})
+            let title = String(format: "Weitermachen mit: %@?", beer!.Name)
+            
+            continueButton.setTitle(title, for: UIControl.State.normal)
+            continueButton.isHidden = false
+        }
     }
-
+    @IBAction func continuePressed(_ sender: UIButton) {
+        recipeId = UserDefaults.standard.string(forKey: "Id")!
+        volume = UserDefaults.standard.float(forKey: "WaterVolume")
+        NSLog("Continue with persisted: %@, %f L.", recipeId, volume)
+    }
+    @IBAction func zutatenPressed(_ sender: UIButton) {
+       let index : Int = beerPicker.selectedRow(inComponent: 0)
+        recipeId = beers[index].Id
+        volume = volumeSlider.value
+        NSLog("Continue with user input: %@, %f L.", recipeId, volume)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -48,28 +66,26 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         let rawData = try! Data(contentsOf: self.recipesUrl!)
         let jsonData = try! JSONSerialization.jsonObject(with: rawData)
         
-        for item in jsonData as! [[String:String]] {
-            recipes.append((Id: item["id"]!, Name: item["name"]!))
+        for item in jsonData as! [[String: Any]] {
+            recipes.append((Id: item["id"] as! String, Name: item["name"] as! String))
         }
         return recipes;
     }
     
     //picker functions
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        // Column count: use one column.
         return 1
     }
     func pickerView(_ pickerView: UIPickerView,
                     numberOfRowsInComponent component: Int) -> Int {
-        
-        // Row count: rows equals array length.
         return beers.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        self.recipeId = beers[row].Id
-        // Return a string from the array for this row.
         return beers[row].Name
-        
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+       recipeId = beers[row].Id
     }
     
     // volume slider and textfield functions
@@ -81,20 +97,8 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         
         let text : String! = sender.text
         let volume : Float = Float(text) ?? 0.0
-        // TODO: Min / Max value
-        // TODO: slider = textfield value
         volumeSlider.value = volume
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is RecipeViewController {
-            let vc = segue.destination as? RecipeViewController
-            
-            NSLog("Selected beer: " + recipeId)
-            NSLog("Volume in L : " + String(volume))
-            vc?.volume = self.volume
-            vc?.recipeId = self.recipeId
-        }
-    }
 }
 

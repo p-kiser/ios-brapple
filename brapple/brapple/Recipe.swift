@@ -7,7 +7,8 @@
 //
 import UIKit
 
-class Recipe {
+
+class Recipe : NSObject, NSCoding {
     
     var Name : String
     var Water : Float
@@ -19,8 +20,36 @@ class Recipe {
     var Hopping : [(Name:String,Time:Int)]
     var Fermentation : (Temp:Int, Weeks:Int)
     var Maturation : (Glucose:Int, Temp:Int, Duration: Int)
+
+    // used for persisting
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(Name, forKey: "Name")
+        aCoder.encode(Water, forKey: "Water")
+        aCoder.encode(Style, forKey: "Style")
+        aCoder.encode(Malts, forKey: "Malts")
+        aCoder.encode(Hops, forKey: "Hops")
+        aCoder.encode(Yeast, forKey: "Yeast")
+        aCoder.encode(Mashing, forKey: "Mashing")
+        aCoder.encode(Hopping, forKey: "Hopping")
+        aCoder.encode(Fermentation, forKey: "Fermentation")
+        aCoder.encode(Maturation, forKey: "Maturation")
+    }
     
-    // json from url, volume from view
+    required convenience init(coder aDecoder: NSCoder) {
+        
+        self.init(Name: aDecoder.decodeObject(forKey: "Name") as! String,
+                  Water: aDecoder.decodeFloat(forKey: "Water"),
+                  Style: aDecoder.decodeObject(forKey: "Style") as! String,
+                  Malts: aDecoder.decodeObject(forKey: "Malts") as! [(Name: String, Amount: Float)],
+                  Hops: aDecoder.decodeObject(forKey: "Hops") as! [(Name: String, Amount: Float)],
+                  Yeast: aDecoder.decodeObject(forKey: "Yeast") as! [String],
+                  Mashing: aDecoder.decodeObject(forKey: "Mashing") as! [(Temp: Int, Rest: Int)],
+                  Hopping: aDecoder.decodeObject(forKey: "Hopping") as! [(Name: String, Time: Int)],
+                  Fermentation: aDecoder.decodeObject(forKey: "Fermentation") as! (Temp: Int, Weeks: Int),
+                  Maturation: aDecoder.decodeObject(forKey: "Maturation") as! (Glucose: Int, Temp: Int, Duration: Int))
+    }
+    
+    // init with json from url & volume from view
     init(url : URL, volume : Float) {
         
         // try to get recipe from url
@@ -61,18 +90,29 @@ class Recipe {
         Maturation = (Glucose: mat[0], Temp: mat[1], Duration: mat[2])
         NSLog("Got json from URL: " + url.absoluteString)
     }
-    
-    // default init with test data
-    init() {
-        Name         = "Local Test Beer"
-        Water        = 1.23
-        Style        = "Test beer"
-        Malts        = [("Test malt 1", 4), ("Test malt 2", 5)]
-        Hops         = [("Test hops 1", 6), ("Test hops 2", 7)]
-        Yeast        = ["Test yeast"]
-        Mashing      = [(Temp:55, Rest:8),(Temp:65,9)]
-        Hopping      = [("Test hops 1", Time:10), ("Test hops 2", Time: 60)]
-        Fermentation = (Temp: 12, Weeks: 2)
-        Maturation   = (Glucose: 5, Temp: 12, Duration: 21)
+
+    init(
+            Name: String,
+            Water: Float,
+            Style: String,
+            Malts: [(Name:String,Amount:Float)],
+            Hops: [(Name:String,Amount:Float)],
+            Yeast: [String],
+            Mashing: [(Temp:Int,Rest:Int)],
+            Hopping: [(Name:String,Time:Int)],
+            Fermentation: (Temp:Int, Weeks:Int),
+            Maturation: (Glucose:Int, Temp:Int, Duration: Int)
+        ) {
+            self.Name = Name
+            self.Water = Water
+            self.Style = Style
+            self.Malts = Malts
+            self.Hops = Hops
+            self.Yeast = Yeast
+            self.Mashing = Mashing
+            self.Hopping = Hopping
+            self.Fermentation = Fermentation
+            self.Maturation = Maturation
     }
+    
 }

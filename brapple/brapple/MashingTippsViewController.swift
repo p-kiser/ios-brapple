@@ -9,10 +9,12 @@
 import UIKit
 
 class MashingTippsViewController: UIViewController {
-
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // log stuff
-        NSLog(String(describing: type(of: self)))
+        // display beer name and liters
+        nameLabel.text = String(format: "%@, %.2f L", recipe!.Name, volume)
     }
 }

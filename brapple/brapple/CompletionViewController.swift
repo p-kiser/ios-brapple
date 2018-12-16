@@ -10,7 +10,10 @@ import UIKit
 
 class CompletionViewController: UIViewController {
 
+    @IBOutlet weak var topLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        // display beer name and liters
+        topLabel.text = String(format: "%@, %.2f L", recipe!.Name, volume)
     }
 }

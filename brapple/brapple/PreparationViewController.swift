@@ -10,18 +10,30 @@ import UIKit
 
 class PreparationViewController: UIViewController {
 
-    var recipe : Recipe?
+    @IBOutlet weak var mashView: UITextView!
+    @IBOutlet weak var hopsView: UITextView!
+    @IBOutlet weak var fermLabel: UILabel!
+    @IBOutlet weak var matLabel: UILabel!
+    @IBOutlet weak var topLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // display beer name and liters
+        topLabel.text = String(format: "%@, %.2f L", recipe!.Name, volume)
         
-        // log stuff
-        NSLog(">>> " + String(describing: type(of: self)))
+        mashView.text = ""
+        for m in recipe!.Mashing {
+            mashView.text.append(String(format: "Ruhen bei %i °C für %i Minuten\n", m.Temp, m.Rest))
+        }
+        
+        hopsView.text = ""
+        for h in recipe!.Hopping {
+            hopsView.text.append(String(format: "%@ nach %i Minuten\n", h.Name, h.Time))
+        }
+        
+        
+        fermLabel.text = String(format: "%i Tage bei %i °C", recipe!.Fermentation.Weeks, recipe!.Fermentation.Temp)
+        
+        matLabel.text = String(format: "%i Tage bei %i °C", recipe!.Maturation.Duration, recipe!.Maturation.Temp)
     }
-    
-    // TODO Implement presentation of the choosen recipe as preparation steps
-    // 1: 38°C 10 min.
-    // 2: 60°C 20 min.
-    // ...
 }

@@ -13,8 +13,11 @@ class MaturationViewController: UIViewController {
 
     var maturationDuration : Int = 21 // Days
     
+    @IBOutlet weak var topLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        // display beer name and liters
+        topLabel.text = String(format: "%@, %.2f L", recipe!.Name, volume)
     }
     
     @IBAction func onCalendarButtonPressed(_ sender: UIButton) {

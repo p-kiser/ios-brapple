@@ -11,13 +11,42 @@ import EventKit
 
 class FermentationViewController: UIViewController {
     
-    var fermentationDuration : Int = 14 // Days
-
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var fermLabel: UILabel!
+    @IBOutlet weak var matLabel: UILabel!
+    
+    // time in days
+    let fermentation: Int = recipe!.Fermentation.Weeks
+    let maturation : Int = recipe!.Maturation.Duration +  recipe!.Fermentation.Weeks
+    
+    // calendar entry titles
+    let fermText = "Gärung beendet: " + recipe!.Name
+    let matText = "Flaschengärung beendet: " + recipe!.Name
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // display beer name and liters
+        topLabel.text = String(format: "%@, %.2f L", recipe!.Name, volume)
+        
+        // dates on labels
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        fermLabel.text = dateFormatter.string(from: getDate(days: fermentation)) + ": " + fermText
+        matLabel.text = dateFormatter.string(from: getDate(days: maturation)) + ": " + matText
     }
     
     @IBAction func onCalendarButtonPressed(_ sender: UIButton) {
+        setCalendarEntry(date: getDate(days: fermentation), name: fermText)
+        sender.isEnabled = false
+    }
+    @IBAction func matButtPressed(_ sender: UIButton) {
+         setCalendarEntry(date: getDate(days: maturation), name: matText)
+        sender.isEnabled = false
+    }
+    
+    
+    func setCalendarEntry(date: Date, name : String) {
         let eventStore : EKEventStore = EKEventStore()
         
         eventStore.requestAccess(to: .event) {(granted, error) in
@@ -27,12 +56,7 @@ class FermentationViewController: UIViewController {
                 
                 let event : EKEvent = EKEvent(eventStore: eventStore)
                 
-                var dateComponent = DateComponents()
-                dateComponent.day = self.fermentationDuration
-                let currentDate = Date()
-                let date = Calendar.current.date(byAdding: dateComponent, to: currentDate)
-                
-                event.title = "Gärung beendet"
+                event.title = name
                 event.startDate = date
                 event.endDate = date
                 event.calendar = eventStore.defaultCalendarForNewEvents
@@ -51,5 +75,13 @@ class FermentationViewController: UIViewController {
                 print("Failed to save event with error : \(String(describing: error)) or access not granted")
             }
         }
+    }
+    
+    func getDate(days : Int) -> Date {
+        var dateComponent = DateComponents()
+        dateComponent.day = days
+        let currentDate = Date()
+        let date = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+        return date!;
     }
 }
